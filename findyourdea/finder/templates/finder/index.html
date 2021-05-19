@@ -6,15 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{%static '/styles.css'%}" defer>
+    
     <title>Find Your Dea</title>
 </head>
 <body>
-    <h1>Una página decente</h1>
-    <ol>
-    <li>{{dea.direccion_ubicacion}}</li>
-    <a href={{anchor_tag}}><li>Maps</li></a>
-    <a href="http://127.0.0.1:8000/todoslosdeas"><p>Esto es un link</p></a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex justify-content-center" href="#">Find Your Dea</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Listado</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Sugerencias</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-    </ol>
+    <main class="flex">
+      <div class="d-flex justify-content-center" id="nearestDea">
+      <div class="card" style="width: 18rem;">
+        {%load static%}
+        <img src="{%static '/img/AED_sign.svg.png'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <div class="d-flex justify-content-center">  
+
+          <h5 class="card-title">{{dea.direccion_ubicacion}}</h5>
+          </div>
+
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="d-flex justify-content-center">  
+          <a href={{anchor_tag}} class="btn btn-success">Go To Maps</a>
+        </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <h1>Una página decente</h1>
+    <ul>
+    <li>{{dea.direccion_ubicacion}}</li>
+    {%if anchor_tag == "#"%}
+    {%else%}
+    <a href={{anchor_tag}}><li>Maps</li></a>
+    
+    {%endif%}
+    </ul>
 </body>
 </html>

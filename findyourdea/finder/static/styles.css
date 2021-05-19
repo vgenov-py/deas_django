@@ -1,0 +1,15 @@
+.nav-link .active{
+    color: inherit;
+    background-color: transparent;
+    text-decoration: none;
+    color: white;
+}
+
+#formContainer {
+    margin-top: 2em;
+    margin-left: auto;
+}
+
+#nearestDea {
+    margin-top: 2em;
+}
